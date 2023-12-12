@@ -50,7 +50,7 @@
 		if (selected === spaces[0]) {
 			total = (isPerf ? performanceTotal : 0) + rehearsalTotal;
 		} else {
-			total = (isTeach ? prices.studio.teachingArtist : prices.studio.teachingArtist) * studioTime;
+			total = (isTeach ? prices.studio.teachingArtist : prices.studio.artist) * studioTime;
 		}
 	}
 </script>
