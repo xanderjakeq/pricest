@@ -111,7 +111,10 @@
 							id="theatreRehearse"
 						/>
 					</div>
-					<span class="text-slate-700/75">{theatreRehearse} hrs</span>
+					<span class="text-slate-700/75"
+						>{theatreRehearse}
+						{theatreRehearse > 1 ? 'hrs' : 'hr'}</span
+					>
 				</div>
 			</div>
 		{:else}
@@ -131,7 +134,7 @@
 							id="theatreRehearse"
 						/>
 					</div>
-					<span class="text-slate-700/75">{studioTime} hrs</span>
+					<span class="text-slate-700/75">{studioTime} {studioTime > 1 ? 'hrs' : 'hr'}</span>
 				</div>
 			</div>
 		{/if}
