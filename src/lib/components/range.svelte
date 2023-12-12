@@ -10,6 +10,7 @@
 		-webkit-appearance: none;
 		margin: 10px 0;
 		width: 100%;
+        background: transparent;
 	}
 	input[type='range']:focus {
 		outline: none;
