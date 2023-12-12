@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Range from '$lib/components/range.svelte';
+
 	let spaces = ['theatre', 'studio'];
 	let selected: string;
 
@@ -56,13 +58,11 @@
 			<div class="w-full max-w-xl">
 				<label for="theatrePerformance">performance</label>
 				<div class="slidecontainer">
-					<input
-						type="range"
+					<Range
 						min={time.theatre.min}
 						max={time.theatre.max}
-						step="1"
+						step={1}
 						bind:value={theatrePerf}
-						class="slider w-full"
 						id="theatrePerformance"
 					/>
 				</div>
@@ -77,13 +77,11 @@
 				<br />
 				<input bind:checked={isTech} type="checkbox" id="tech" /> <label for="tech">tech</label>
 				<div class="slidecontainer">
-					<input
-						type="range"
+					<Range
 						min={time.theatre.min}
 						max={time.theatre.max}
-						step="1"
+						step={1}
 						bind:value={theatreRehearse}
-						class="slider w-full"
 						id="theatreRehearse"
 					/>
 				</div>
