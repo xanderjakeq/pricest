@@ -167,7 +167,7 @@
 
 		<div>
 			<h3 class="font-bold">addons</h3>
-			<div class="flex">
+			<div class="flex flex-wrap gap-5">
 				{#if selected != spaces[0]}
 					<div>
 						<input bind:checked={audio} type="checkbox" id="audio" />
@@ -177,6 +177,7 @@
 2 microphones
 Other recording gear
 An audio engineer"
+							class="hover:cursor-pointer"
 						>
 							Audio Recording
 						</label>
@@ -189,6 +190,7 @@ An audio engineer"
 A Lighting Technician
 3 high powered LED lights
 Custom lighting setup"
+							class="hover:cursor-pointer"
 						>
 							Lighting
 						</label>
@@ -203,6 +205,7 @@ Custom lighting setup"
 A photographer
 15 High Quality photos
 Delivery within 2 business days"
+						class="hover:cursor-pointer"
 					>
 						Photography
 					</label>
@@ -217,6 +220,7 @@ High quality video
 Standing camera
 Light editing
 Delivery within 2 business days"
+						class="hover:cursor-pointer"
 					>
 						Videography
 					</label>
