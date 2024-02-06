@@ -5,6 +5,8 @@
 	let spaces = ['theatre', 'studio'];
 	let selected: string = $page.url.searchParams.get('space') || spaces[0];
 
+	console.log(selected);
+
 	const prices = {
 		theatre: {
 			perf: 250,
@@ -15,6 +17,12 @@
 		studio: {
 			artist: 40,
 			teachingArtist: 60
+		},
+		addons: {
+			audio: 30,
+			photography: 50,
+			videography: 75,
+			lighting: 75
 		}
 	};
 
@@ -36,33 +44,51 @@
 	let isPerf = false;
 	let isTeach = false;
 
+	//addons
+	let audio = false;
+	let photography = false;
+	let videography = false;
+	let lighting = false;
+
+	let addons = 0;
 	let total = 0;
 
 	$: {
 		theatreRehearse = isTech ? 4 : 1;
 	}
 
-	$: performanceTotal = prices.theatre.securityDeposit + prices.theatre.perf * theatrePerf;
+	$: performanceTotal =
+		prices.theatre.securityDeposit + (prices.theatre.perf + addons) * theatrePerf;
 	$: rehearsalTotal =
-		theatreRehearse * (isTech ? prices.theatre.techRehearsal : prices.theatre.rehearsal);
+		((isTech ? prices.theatre.techRehearsal : prices.theatre.rehearsal) + addons) * theatreRehearse;
+
+	$: {
+		addons =
+			(audio ? prices.addons.audio : 0) +
+			(lighting ? prices.addons.lighting : 0) +
+			(photography ? prices.addons.photography : 0) +
+			(videography ? prices.addons.videography : 0);
+	}
 
 	$: {
 		if (selected === spaces[0]) {
 			total = (isPerf ? performanceTotal : 0) + rehearsalTotal;
 		} else {
-			total = (isTeach ? prices.studio.teachingArtist : prices.studio.artist) * studioTime;
+			total =
+				((isTeach ? prices.studio.teachingArtist : prices.studio.artist) + addons) * studioTime;
 		}
 	}
 </script>
 
 <div class="m-10">
 	<h2 class="text-[6rem] font-bold text-[#323755] text-right">${total}</h2>
-	<label for="space" class="text-sm font-medium text-gray-900">space:</label>
+	<label for="space" class="text-sm font-medium text-gray-900 hidden">space:</label>
 	<select
 		bind:value={selected}
 		name="space"
 		id="space"
-		class="my-1.5 border-2 rounded-md border-gray-300 text-gray-700 sm:text-sm"
+		class="my-1.5 border-2 rounded-md border-gray-300 text-gray-700
+        sm:text-sm hidden"
 	>
 		{#each spaces as space}
 			<option value={space}>{space}</option>
@@ -138,6 +164,65 @@
 				</div>
 			</div>
 		{/if}
+
+		<div>
+			<h3 class="font-bold">addons</h3>
+			<div class="flex">
+				{#if selected != spaces[0]}
+					<div>
+						<input bind:checked={audio} type="checkbox" id="audio" />
+						<label
+							for="audio"
+							title="$30/hr
+2 microphones
+Other recording gear
+An audio engineer"
+						>
+							Audio Recording
+						</label>
+					</div>
+					<div>
+						<input bind:checked={lighting} type="checkbox" id="lighting" />
+						<label
+							for="lighting"
+							title="75/hr
+A Lighting Technician
+3 high powered LED lights
+Custom lighting setup"
+						>
+							Lighting
+						</label>
+					</div>
+				{/if}
+
+				<div>
+					<input bind:checked={photography} type="checkbox" id="photography" />
+					<label
+						for="photography"
+						title="$50/hr
+A photographer
+15 High Quality photos
+Delivery within 2 business days"
+					>
+						Photography
+					</label>
+				</div>
+				<div>
+					<input bind:checked={videography} type="checkbox" id="videography" />
+					<label
+						for="videography"
+						title="$75/hr
+A videographer
+High quality video
+Standing camera
+Light editing
+Delivery within 2 business days"
+					>
+						Videography
+					</label>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="flex flex-col flex-start">
 		<a
