@@ -22,7 +22,8 @@
 			audio: 30,
 			photography: 50,
 			videography: 75,
-			lighting: 75
+			lighting: 75,
+			livestreaming: 75
 		}
 	};
 
@@ -49,6 +50,7 @@
 	let photography = false;
 	let videography = false;
 	let lighting = false;
+	let livestreaming = false;
 
 	let addons = 0;
 	let total = 0;
@@ -68,6 +70,7 @@
 			(lighting ? prices.addons.lighting : 0) +
 			(photography ? prices.addons.photography : 0) +
 			(videography ? prices.addons.videography : 0);
+			(livestreaming ? prices.addons.livestreaming : 0);
 	}
 
 	$: {
@@ -179,7 +182,7 @@ Other recording gear
 An audio engineer"
 							class="hover:cursor-pointer"
 						>
-							Audio Recording
+							Podcast Audio Recording
 						</label>
 					</div>
 					<div>
@@ -223,6 +226,19 @@ Delivery within 2 business days"
 						class="hover:cursor-pointer"
 					>
 						Videography
+					</label>
+				</div>
+				<div>
+					<input bind:checked={livestreaming} type="checkbox" id="livestreaming" />
+					<label
+						for="livestreaming"
+						title="$75/hr
+High quality Video
+1 Microphone
+Media Technician"
+						class="hover:cursor-pointer"
+					>
+						Livestreaming
 					</label>
 				</div>
 			</div>
