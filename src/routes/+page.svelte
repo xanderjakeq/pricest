@@ -5,8 +5,6 @@
 	let spaces = ['theatre', 'studio'];
 	let selected: string = $page.url.searchParams.get('space') || spaces[0];
 
-	console.log(selected);
-
 	const prices = {
 		theatre: {
 			perf: 250,
@@ -69,7 +67,7 @@
 			(audio ? prices.addons.audio : 0) +
 			(lighting ? prices.addons.lighting : 0) +
 			(photography ? prices.addons.photography : 0) +
-			(videography ? prices.addons.videography : 0);
+			(videography ? prices.addons.videography : 0) +
 			(livestreaming ? prices.addons.livestreaming : 0);
 	}
 
