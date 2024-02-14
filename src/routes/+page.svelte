@@ -125,7 +125,7 @@
 			<label for="theatreRehearse" class="text-xl font-bold block mb-3">rehearsal</label>
 			<div class="flex flex-col md:flex-row gap-3 items-center justify-between">
 				<div class="w-full md:w-64 text-[3rem] font-thin">
-					${isTech ? prices.theatre.techRehearsal : prices.theatre.rehearsal}/hr
+					${(isTech ? prices.theatre.techRehearsal : prices.theatre.rehearsal) + addons}/hr
 				</div>
 				<div class="w-full max-w-xl">
 					<input bind:checked={isTech} type="checkbox" id="tech" /> <label for="tech">tech</label>
@@ -147,7 +147,7 @@
 		{:else}
 			<div class="flex flex-col md:flex-row gap-3 items-center justify-between">
 				<div class="w-full md:w-64 text-[3rem] font-thin">
-					${isTeach ? prices.studio.teachingArtist : prices.studio.artist}/hr
+					${(isTeach ? prices.studio.teachingArtist : prices.studio.artist) + addons}/hr
 				</div>
 				<div class="w-full max-w-xl">
 					<input bind:checked={isTeach} type="checkbox" id="teach" />
