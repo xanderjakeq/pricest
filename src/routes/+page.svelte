@@ -3,7 +3,8 @@
 	import Range from '$lib/components/range.svelte';
 
 	let spaces = ['theatre', 'studio'];
-	let selected: string = $page.url.searchParams.get('space') || spaces[0];
+	let space = $page.url.searchParams.get('space');
+	let selected: string = space || spaces[0];
 
 	const prices = {
 		theatre: {
@@ -84,17 +85,19 @@
 <div class="m-10">
 	<h2 class="text-[6rem] font-bold text-[#323755] text-right">${total}</h2>
 	<label for="space" class="text-sm font-medium text-gray-900 hidden">space:</label>
-	<select
-		bind:value={selected}
-		name="space"
-		id="space"
-		class="my-1.5 border-2 rounded-md border-gray-300 text-gray-700
-        sm:text-sm hidden"
-	>
-		{#each spaces as space}
-			<option value={space}>{space}</option>
-		{/each}
-	</select>
+	{#if !space}
+		<select
+			bind:value={selected}
+			name="space"
+			id="space"
+			class="my-1.5 border-2 rounded-md border-gray-300 text-gray-700
+        sm:text-sm"
+		>
+			{#each spaces as space}
+				<option value={space}>{space}</option>
+			{/each}
+		</select>
+	{/if}
 
 	<div class="border-4 border-[#FC7950] rounded-xl p-5 bg-orange-400/[.05]">
 		{#if selected === spaces[0]}
