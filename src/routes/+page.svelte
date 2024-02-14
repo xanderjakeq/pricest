@@ -106,7 +106,12 @@
                     my-3">performance</label
 				>
 				<div class="flex flex-col md:flex-row gap-3 items-center justify-between mb-6">
-					<div class="w-full md:w-64 text-[3rem] font-thin">${prices.theatre.perf}/hr</div>
+					<div
+						class="w-full md:w-64 text-[3rem]
+                        font-thin"
+					>
+						${prices.theatre.perf + addons}/hr
+					</div>
 					<div class="w-full max-w-xl">
 						<div class="slidecontainer">
 							<Range
