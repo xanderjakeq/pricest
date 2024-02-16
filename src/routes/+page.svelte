@@ -8,10 +8,11 @@
 
 	const prices = {
 		theatre: {
-			perf: 250,
+			perf: 300,
+			partnerPerf: 250,
 			securityDeposit: 300,
-			techRehearsal: 125,
-			rehearsal: 80
+			techRehearsal: 200,
+			rehearsal: 100
 		},
 		studio: {
 			artist: 40,
@@ -109,11 +110,16 @@
                     my-3">performance</label
 				>
 				<div class="flex flex-col md:flex-row gap-3 items-center justify-between mb-6">
-					<div
-						class="w-full md:w-64 text-[3rem]
-                        font-thin"
-					>
-						${prices.theatre.perf + addons}/hr
+					<div>
+						<p
+							class="w-full md:w-64 text-[3rem]
+                                    font-thin"
+						>
+							${prices.theatre.perf + addons}/hr
+						</p>
+						<span class="text-sm opacity-50">
+							${prices.theatre.securityDeposit} security deposit
+						</span>
 					</div>
 					<div class="w-full max-w-xl">
 						<div class="slidecontainer">
@@ -248,11 +254,24 @@ Media Technician"
 					</label>
 				</div>
 			</div>
+
+			<p class="text-sm max-w-sm my-5 opacity-50">
+				The CreativeWorks Digital Media Team must be booked separately. This calculator does not
+				guarantee the media team's availability for your event. Book the media team for your event
+				<a
+					href="https://docs.google.com/forms/d/e/1FAIpQLSf96nxL7ZyJpDmOT1aU_ighN0tL9iaM_mm1yQhXKI9rDtQO5Q/viewform"
+					class="text-sky-500"
+				>
+					here
+				</a>.
+			</p>
 		</div>
 	</div>
 	<div class="flex flex-col flex-start">
 		<a
-			href={'mailto:ricardo@joesmovement.org?subject=' +
+			href={'mailto:' +
+				(selected === spaces[0] ? 'gustavo' : 'ricardo') +
+				'@joesmovement.org?subject=' +
 				(selected === spaces[0]
 					? "Theatre%20rental%20for%20Joe's%20Movement%20Emporium"
 					: "Space%20Rental%20for%20Joe's%20Movement%20Emporium")}
