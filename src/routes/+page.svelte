@@ -1,42 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Range from '$lib/components/range.svelte';
+	import { prices, time } from '$lib/consts';
 
 	let spaces = ['theatre', 'studio'];
 	let space = $page.url.searchParams.get('space');
 	let selected: string = space || spaces[0];
-
-	const prices = {
-		theatre: {
-			perf: 300,
-			partnerPerf: 250,
-			securityDeposit: 300,
-			techRehearsal: 200,
-			rehearsal: 100
-		},
-		studio: {
-			artist: 40,
-			teachingArtist: 60
-		},
-		addons: {
-			audio: 30,
-			photography: 50,
-			videography: 75,
-			lighting: 75,
-			livestreaming: 75
-		}
-	};
-
-	const time = {
-		theatre: {
-			min: 4,
-			max: 20
-		},
-		studio: {
-			min: 1,
-			max: 20
-		}
-	};
 
 	let theatrePerf = 4;
 	let theatreRehearse = 1;
