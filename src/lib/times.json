@@ -1,0 +1,12 @@
+{
+    "times": {
+        "theatre": {
+            "min": 4,
+            "max": 20
+        },
+        "studio": {
+            "min": 1,
+            "max": 20
+        }
+    }
+}

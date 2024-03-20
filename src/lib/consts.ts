@@ -1,3 +1,5 @@
+import type { Prices } from "$lib/types";
+
 // $
 export const prices = {
     theatre: {
