@@ -1,7 +1,14 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
 	import { page } from '$app/stores';
 	import Range from '$lib/components/range.svelte';
-	import { prices, time } from '$lib/consts';
+	import { prices as static_price, time as static_time } from '$lib/consts';
+
+	export let data: PageData;
+
+	const prices = data.prices || static_price;
+	const time = data.time || static_time;
 
 	let spaces = ['theatre', 'studio'];
 	let space = $page.url.searchParams.get('space');
